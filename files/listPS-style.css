@@ -1,0 +1,39 @@
+.tableListPS { 
+	position: relative; 
+	border-collapse: collapse; 
+	/* table-layout: fixed;  */
+	width: 100%; 
+	margin: 0 !important; 
+	border: 0 !important; 
+	padding: 0 !important; 
+	color: #333333; 
+	font-size: 1.15em !important; 
+	line-height: 1.75 !important; 
+	word-wrap: break-word; 
+	font-family: "Playfair Display" !important; 
+	text-align: left; 
+}
+
+.table-header { 
+	color: white; 
+	background: #bfbfbf;
+}
+
+.table-col-origin {
+	width: 10%;
+}
+
+.table-col-description {
+	width: 85%;
+}
+
+.table-col-knowmore{
+	width: 5%;
+	text-align: center;
+}
+
+.table-body { 
+	border: 1px solid #bfbfbf;
+	border-collapse: collapse;
+}
+

@@ -1,0 +1,145 @@
+# BusinessEvent
+<http://data.europa.eu/m8g/BusinessEvent> <http://cpsvapshow> <http://purl.org/dc/terms/title> .
+<http://purl.org/dc/terms/title> <http://cpsvapfield> "Name" .
+<http://purl.org/dc/terms/description> <http://cpsvapfield> "Description" .
+<http://purl.org/dc/terms/type> <http://cpsvapfield> "Type" .
+<http://purl.org/dc/terms/relation> <http://cpsvapfield> "Related service" .
+
+# Life Event
+<http://data.europa.eu/m8g/LifeEvent> <http://cpsvapshow> <http://purl.org/dc/terms/title> .
+<http://purl.org/dc/terms/title> <http://cpsvapfield> "Name" .
+<http://purl.org/dc/terms/description> <http://cpsvapfield> "Description" .
+<http://purl.org/dc/terms/type> <http://cpsvapfield> "Type" .
+<http://purl.org/dc/terms/relation> <http://cpsvapfield> "Related service" .
+
+# Public Service
+<http://purl.org/vocab/cpsv#PublicService> <http://cpsvapshow> <http://purl.org/dc/terms/title> .
+<http://purl.org/dc/terms/title> <http://cpsvapfield> "Name" .
+<http://purl.org/dc/terms/description> <http://cpsvapfield> "Description" .
+<http://data.europa.eu/m8g/hasCompetentAuthority> <http://cpsvapfield> "Public Organisation" .
+<http://www.w3.org/ns/dcat#keyword> <http://cpsvapfield> "Keyword" .
+<http://data.europa.eu/m8g/sector> <http://cpsvapfield> "Sector" .
+<http://purl.org/dc/terms/type> <http://cpsvapfield> "Type" .
+<http://purl.org/dc/terms/language> <http://cpsvapfield> "Language" .
+<http://www.w3.org/ns/adms#status> <http://cpsvapfield> "Status" .
+<http://data.europa.eu/m8g/isGroupedBy> <http://cpsvapfield> "Event" .
+<http://purl.org/dc/terms/requires> <http://cpsvapfield> "Requires" .
+<http://purl.org/dc/terms/relation> <http://cpsvapfield> "Related" .
+<http://data.europa.eu/m8g/hasCriterion> <http://cpsvapfield> "Criterion" .
+<http://data.europa.eu/m8g/serviceProvider> <http://cpsvapfield> "Service provider" .
+<http://data.europa.eu/m8g/serviceUser> <http://cpsvapfield> "Service User" .
+<http://data.europa.eu/m8g/hasParticipation> <http://cpsvapfield> "Participation" .
+<http://purl.org/vocab/cpsv#hasInput> <http://cpsvapfield> "Input" .
+<http://data.europa.eu/m8g/hasFormalFramework> <http://cpsvapfield> "Formal Framework" .
+<http://purl.org/vocab/cpsv#produces> <http://cpsvapfield> "Produces" .
+<http://purl.org/vocab/cpsv#follows> <http://cpsvapfield> "Rule" .
+<http://purl.org/dc/terms/spatial> <http://cpsvapfield> "Spatial" .
+<http://purl.org/dc/terms/temporal> <http://cpsvapfield> "Temporal" .
+<http://data.europa.eu/m8g/hasContactPoint> <http://cpsvapfield> "Contact Point" .
+<http://data.europa.eu/m8g/hasChannel> <http://cpsvapfield> "Channel" .
+<http://data.europa.eu/m8g/processingTime> <http://cpsvapfield> "Processing Time" .
+<http://data.europa.eu/m8g/hasCost> <http://cpsvapfield> "Cost" .
+
+# Participation
+<http://data.europa.eu/m8g/Participation> <http://cpsvapshow> <http://purl.org/dc/terms/description> .
+<http://purl.org/dc/terms/description> <http://cpsvapfield> "Description" .
+<http://data.europa.eu/m8g/role> <http://cpsvapfield> "Role" .
+
+# Criterion
+<http://data.europa.eu/m8g/CriterionRequirement> <http://cpsvapshow> <http://purl.org/dc/terms/title> .
+<http://purl.org/dc/terms/title> <http://cpsvapfield> "Name" .
+<http://purl.org/dc/terms/type> <http://cpsvapfield> "Type" .
+
+# Evidence
+<http://data.europa.eu/m8g/Evidence> <http://cpsvapshow> <http://purl.org/dc/terms/title> .
+<http://purl.org/dc/terms/title> <http://cpsvapfield> "Name" .
+<http://purl.org/dc/terms/description> <http://cpsvapfield> "Description" .
+<http://purl.org/dc/terms/type> <http://cpsvapfield> "Type" .
+<http://xmlns.com/foaf/0.1/page> <http://cpsvapfield> "Related Documentation" .
+<http://purl.org/dc/terms/language> <http://cpsvapfield> "Language" .
+
+# Output
+<http://data.europa.eu/m8g/Output> <http://cpsvapshow> <http://purl.org/dc/terms/title> .
+<http://purl.org/dc/terms/title> <http://cpsvapfield> "Name" .
+<http://purl.org/dc/terms/description> <http://cpsvapfield> "Description" .
+<http://purl.org/dc/terms/type> <http://cpsvapfield> "Type" .
+
+# Cost
+<http://data.europa.eu/m8g/Cost> <http://cpsvapshow> <http://data.europa.eu/m8g/value> .
+<http://data.europa.eu/m8g/value> <http://cpsvapfield> "Value" .
+<http://data.europa.eu/m8g/currency> <http://cpsvapfield> "Currency" .
+<http://purl.org/dc/terms/description> <http://cpsvapfield> "Description" .
+<hhttp://data.europa.eu/m8g/isDefinedBy> <http://cpsvapfield> "Defined By" .
+
+# Channel
+<http://data.europa.eu/m8g/Channel> <http://cpsvapshow> <http://purl.org/dc/terms/type> .
+<http://data.europa.eu/m8g/hasContactPoint> <http://cpsvapfield> "Contact Point" .
+<http://data.europa.eu/m8g/isOwnedBy> <http://cpsvapfield> "Public Organisation" .
+<http://purl.org/dc/terms/type> <http://cpsvapfield> "Type" .
+<http://data.europa.eu/m8g/processingTime> <http://cpsvapfield> "Processing Time" .
+<http://data.europa.eu/m8g/availability> <http://cpsvapfield> "Availability" .
+<http://data.europa.eu/m8g/hasCost> <http://cpsvapfield> "Cost" .
+<http://data.europa.eu/m8g/hasInput> <http://cpsvapfield> "Input" .
+
+# Period of Time
+<http://data.europa.eu/m8g/PeriodOfTime> <http://cpsvapshow> <http://data.europa.eu/m8g/openingHours> .
+<http://data.europa.eu/m8g/startDateTime> <http://cpsvapfield> "Start date/time" .
+<http://data.europa.eu/m8g/endDateTime> <http://cpsvapfield> "End date/time" .
+<http://data.europa.eu/m8g/openingHours> <http://cpsvapfield> "Opening Hours" .
+
+# Rule
+<http://purl.org/vocab/cpsv#Rule> <http://cpsvapshow> <http://purl.org/dc/terms/title> .
+<http://purl.org/dc/terms/title> <http://cpsvapfield> "Name" .
+<http://purl.org/dc/terms/description> <http://cpsvapfield> "Description" .
+<http://purl.org/dc/terms/language> <http://cpsvapfield> "Language" .
+<http://purl.org/vocab/cpsv#implements> <http://cpsvapfield> "Implements" .
+
+# Formal Framework
+<http://purl.org/vocab/cpsv#FormalFramework> <http://cpsvapshow> <http://purl.org/dc/terms/title> .
+<http://purl.org/dc/terms/title> <http://cpsvapfield> "Name" .
+<http://purl.org/dc/terms/description> <http://cpsvapfield> "Description" .
+<http://data.europa.eu/eli/ontology#language> <http://cpsvapfield> "Language" .
+<http://www.w3.org/ns/adms#status> <http://cpsvapfield> "Status" .
+<http://data.europa.eu/m8g/subject> <http://cpsvapfield> "Subject" .
+<http://data.europa.eu/m8g/territorialApplication> <http://cpsvapfield> "Territorial Application" .
+<http://purl.org/dc/terms/type> <http://cpsvapfield> "Type" .
+<http://purl.org/dc/terms/relation> <http://cpsvapfield> "Related" .
+
+# Agent
+<http://purl.org/dc/terms/Agent> <http://cpsvapshow> <http://purl.org/dc/terms/title> .
+<http://purl.org/dc/terms/title> <http://cpsvapfield> "Name" .
+<http://purl.org/dc/terms/type> <http://cpsvapfield> "Type" .
+<http://data.europa.eu/m8g/playsRole> <http://cpsvapfield> "Participates" .
+<http://data.europa.eu/m8g/uses> <http://cpsvapfield> "Uses" .
+<http://data.europa.eu/m8g/hasAddress> <http://cpsvapfield> "Address" .
+
+# Public Organisation
+<http://data.europa.eu/m8g/PublicOrganization> <http://cpsvapshow> <http://purl.org/dc/terms/title> .
+<http://purl.org/dc/terms/title> <http://cpsvapfield> "Name" .
+<http://www.w3.org/2004/02/skos/core#altLabel> <http://cpsvapfield> "Preferred Label" .
+<http://purl.org/dc/terms/spatial> <http://cpsvapfield> "Spatial" .
+<http://purl.org/dc/terms/type> <http://cpsvapfield> "Type" .
+<http://data.europa.eu/m8g/playsRole> <http://cpsvapfield> "Participates" .
+<http://data.europa.eu/m8g/uses> <http://cpsvapfield> "Uses" .
+<http://data.europa.eu/m8g/hasAddress> <http://cpsvapfield> "Address" .
+
+# Contact
+<http://www.w3.org/2006/vcard/ns#Contact> <http://cpsvapshow> <http://www.w3.org/2006/vcard/ns#hasURL> .
+<http://www.w3.org/2006/vcard/ns#hasURL> <http://cpsvapfield> "URL" .
+<http://www.w3.org/2006/vcard/ns#hasTelephone> <http://cpsvapfield> "Telephone" .
+<http://www.w3.org/2006/vcard/ns#hasAddress> <http://cpsvapfield> "Address" .
+<http://www.w3.org/2006/vcard/ns#hasEmail> <http://cpsvapfield> "eMail" .
+
+# Address
+<http://www.w3.org/ns/locn#Address> <http://cpsvapshow> <http://www.w3.org/ns/locn#fullAddress> .
+<http://www.w3.org/ns/locn#fullAddress> <http://cpsvapfield> "Address" .
+<http://www.w3.org/ns/locn#addressId> <http://cpsvapfield> "Address ID" .
+<http://www.w3.org/ns/locn#addressArea> <http://cpsvapfield> "Area" .
+<http://www.w3.org/ns/locn#adminUnitL1> <http://cpsvapfield> "Admin Unit L1" .
+<http://www.w3.org/ns/locn#adminUnitL2> <http://cpsvapfield> "Admin Unit L2" .
+<http://www.w3.org/ns/locn#locatorDesignator> <http://cpsvapfield> "Locator Designator" .
+<http://www.w3.org/ns/locn#locatorName> <http://cpsvapfield> "Locator Name" .
+<http://www.w3.org/ns/locn#poBox> <http://cpsvapfield> "PO Box" .
+<http://www.w3.org/ns/locn#postCode> <http://cpsvapfield> "Post Code" .
+<http://www.w3.org/ns/locn#postName> <http://cpsvapfield> "Post Name" .
+<http://www.w3.org/ns/locn#thoroughfare> <http://cpsvapfield> "Thoroughfare" .

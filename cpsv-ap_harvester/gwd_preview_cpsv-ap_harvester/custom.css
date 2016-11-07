@@ -1,0 +1,27 @@
+/******* RESETS */
+body {
+  line-height: 1.3;
+}
+
+/******* STYLING */
+
+/* Shadows */
+.box-shadow {
+  -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.text-shadow {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+/******* TRANSITIONS */
+
+.transition-opacity {
+  -webkit-transition: opacity, 0.5s, ease;
+  transition: opacity, 0.5s, ease;
+}
+.transition-all {
+  -webkit-transition: all, 0.5s, ease;
+  transition: all, 0.5s, ease;
+}
