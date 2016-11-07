@@ -841,14 +841,18 @@ function initialise (type) {
 	/* initialiseLanguage(type); */
 	initialiseListPS(type);
 	
-	var titleps = document.getElementById("title1");
+	var titleps = document.getElementById("title");
+	titleps.innerHTML = " ";
+	var descps = document.getElementById("description");
+	descps.innerHTML = " ";
+	/* var titleps = document.getElementById("title1");
 	titleps.innerHTML = " ";
 	var descps = document.getElementById("description1");
 	descps.innerHTML = " ";
-	titleps = document.getElementById("title2");
+	/* titleps = document.getElementById("title2");
 	titleps.innerHTML = " ";
 	descps = document.getElementById("description2");
-	descps.innerHTML = " ";
+	descps.innerHTML = " "; */
 }
 
 function getSelectedPS () {
@@ -1144,14 +1148,17 @@ function getMoreInfo (uri, uriName) {
 function getPSInfo (uri, origin) {
 	var props="";
 	
-	if (origin == "Estonia") {
+	/* if (origin == "Estonia") {
 		var desc = document.getElementById("description1");
 		var title = document.getElementById("title1");
 	}
 	if (origin == "Finland") {
 		var desc = document.getElementById("description2");
 		var title = document.getElementById("title2");
-	}
+	} */
+	
+	var title = document.getElementById("title");
+	var desc = document.getElementById("description");
 
 	title.innerHTML = "";
 	desc.innerHTML = "Loading description...";
@@ -1186,7 +1193,12 @@ function updateListPS (list) {
 	if (cad == "") cad = "<tr><td/><td>There is no public service found under that criteria.</td><td/></tr>";
 	ps.innerHTML = cad;
 	
-	var titleps = document.getElementById("title1");
+	
+	var titleps = document.getElementById("title");
+	titleps.innerHTML = "";	
+	var descps = document.getElementById("description");
+	descps.innerHTML = "";
+	/* var titleps = document.getElementById("title1");
 	titleps.innerHTML = "";
 	
 	var descps = document.getElementById("description1");
@@ -1196,7 +1208,7 @@ function updateListPS (list) {
 	titleps.innerHTML = "";
 	
 	descps = document.getElementById("description2");
-	descps.innerHTML = "";
+	descps.innerHTML = ""; */
 }
 
 
@@ -1209,14 +1221,18 @@ function applyFilter () {
 	
 	var ps = document.getElementById("listPS");
 	ps.innerHTML = "<tr><td/><td>Loading list of public services</td><td/></tr>";
-	var titleps = document.getElementById("title1");
+	var titleps = document.getElementById("title");
+	titleps.innerHTML = " ";	
+	var descps = document.getElementById("description");
+	descps.innerHTML = " ";
+	/* var titleps = document.getElementById("title1");
 	titleps.innerHTML = " ";	
 	var descps = document.getElementById("description1");
 	descps.innerHTML = " ";
 	titleps = document.getElementById("title2");
 	titleps.innerHTML = " ";	
 	descps = document.getElementById("description2");
-	descps.innerHTML = " ";
+	descps.innerHTML = " "; */
 	
 	if (sector == "")
 		s = "NoSector";
