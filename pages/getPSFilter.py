@@ -57,24 +57,37 @@ else:
 	
 	
 
+sectorquery1 = ""
+sectorquery2 = ""
 sectorquery = ""
-first = "true"
+firstquery = "true"
+firstchar = "true"
+sec = ""
 if sector != "NoSector":
 	aux = sector.split("@#", sector.count("@#") )
 	for x in aux:
+		firstchar = "true"
+		sec = ""
 		aux2 = x.split("##", x.count("##") )
-		sectorquery = sectorquery + ". ?uri <http://data.europa.eu/m8g/sector> '"
+		# sectorquery = sectorquery + ". ?uri <http://data.europa.eu/m8g/sector> '" + y + "'"
 		for y in aux2:
-			if first == "true":
-				sectorquery = sectorquery + y
-				first = "false"
+			if firstchar == "true":
+				sec = y
+				firstchar = "false"
 			else:
-				sectorquery = sectorquery + " " + y
-		sectorquery = sectorquery + "'"
+				sec = sec + " " + y
+		if firstquery == "true":
+				sectorquery1 = ". ?uri <http://data.europa.eu/m8g/sector> '" + sec + "'"
+				firstquery = "false"
+		else:
+			sectorquery = "UNION { ?uri <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/vocab/cpsv#PublicService>" + evquery + ". ?uri <http://data.europa.eu/m8g/sector> '" + sec + "'. OPTIONAL{?uri <http://purl.org/dc/terms/title> ?name}. OPTIONAL{?uri <http://purl.org/dc/terms/description> ?desc}. OPTIONAL{?uri <http://origin> ?origin}}"
+			sectorquery2 = sectorquery2 + " " + sectorquery
+		# sectorquery = sectorquery + "'"
 else:
-	sectorquery = ""
+	sectorquery1 = ""
+	sectorquery2 = ""
 	
-query = "select ?uri ?origin ?name ?desc where {{ ?uri <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/vocab/cpsv#PublicService>" + evquery + sectorquery + ". OPTIONAL{?uri <http://purl.org/dc/terms/title> ?name}. OPTIONAL{?uri <http://purl.org/dc/terms/description> ?desc}. OPTIONAL{?uri <http://origin> ?origin}} UNION { ?uri <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/vocab/cpsv#PublicService>" + evquery + ". OPTIONAL{?uri <http://purl.org/dc/terms/title> ?name}. OPTIONAL{?uri <http://purl.org/dc/terms/description> ?desc}. OPTIONAL{?uri <http://origin> ?origin}. FILTER(!EXISTS {?uri <http://data.europa.eu/m8g/sector> ?sector})} }"
+query = "select distinct ?uri ?origin ?name ?desc where {{ ?uri <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/vocab/cpsv#PublicService>" + evquery + sectorquery1 + ". OPTIONAL{?uri <http://purl.org/dc/terms/title> ?name}. OPTIONAL{?uri <http://purl.org/dc/terms/description> ?desc}. OPTIONAL{?uri <http://origin> ?origin}} UNION { ?uri <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/vocab/cpsv#PublicService>" + evquery + ". OPTIONAL{?uri <http://purl.org/dc/terms/title> ?name}. OPTIONAL{?uri <http://purl.org/dc/terms/description> ?desc}. OPTIONAL{?uri <http://origin> ?origin}. FILTER(!EXISTS {?uri <http://data.europa.eu/m8g/sector> ?sector})} " + sectorquery2 + " }"
 urls = g.query (query)
 
 for row in urls:
