@@ -47,9 +47,9 @@ g = Graph(store, identifier=graph_uri)
 
 query = ""
 if type == "BE":
-	query = "select ?sector where {?ps <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/vocab/cpsv#PublicService>; <http://data.europa.eu/m8g/isGroupedBy> ?event; <http://data.europa.eu/m8g/sector> ?sector. ?event <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/m8g/BusinessEvent>}"
+	query = "select distinct ?sector where {?ps <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/vocab/cpsv#PublicService>; <http://data.europa.eu/m8g/isGroupedBy> ?event; <http://data.europa.eu/m8g/sector> ?sector. ?event <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/m8g/BusinessEvent>}"
 if type == "LE":
-	query = "select ?sector where {?ps <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/vocab/cpsv#PublicService>; <http://data.europa.eu/m8g/isGroupedBy> ?event; <http://data.europa.eu/m8g/sector> ?sector. ?event <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/m8g/LifeEvent>}"
+	query = "select distinct ?sector where {?ps <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/vocab/cpsv#PublicService>; <http://data.europa.eu/m8g/isGroupedBy> ?event; <http://data.europa.eu/m8g/sector> ?sector. ?event <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/m8g/LifeEvent>}"
 sectors = g.query (query)
 
 for row in sectors:
