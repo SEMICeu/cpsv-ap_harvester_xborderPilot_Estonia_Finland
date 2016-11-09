@@ -51,6 +51,11 @@ clean_graph_query = "DELETE FROM <"+graph_uri+"> {?s ?p ?o}  WHERE { ?s ?p ?o; <
 sparql.setQuery(clean_graph_query)
 sparql.query().convert()
 
+clean_graph_query = "DELETE FROM <"+graph_uri+"> {?s ?p ?o}  WHERE { ?s ?p ?o; <http://cpsvaporder> ?o }"
+# Cleanup the existing triples
+sparql.setQuery(clean_graph_query)
+sparql.query().convert()
+
 # Build the RDF from the source data
 input = Graph()
 input.open("store2", create=True)

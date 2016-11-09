@@ -45,7 +45,7 @@ sparql.addDefaultGraph(graph_uri)
 # Create an in memory graph
 g = Graph(store, identifier=graph_uri)
 
-query = "select ?name ?o where {<" + uri + "> ?p ?o. ?p <http://cpsvapfield> ?name. FILTER (?p != <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>). FILTER (?p != <http://origin>)}"
+query = "select distinct ?name ?o where {<" + uri + "> ?p ?o. ?p <http://cpsvapfield> ?name. ?p <http://cpsvaporder> ?order. FILTER (?p != <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>). FILTER (?p != <http://origin>)} ORDER BY ASC(?order)"
 urls = g.query (query)
 
 for row in urls:
