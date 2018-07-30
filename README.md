@@ -1,5 +1,5 @@
 # A cross-border catalogue of Public Services with Finland and Estonia
-A cross-border catalogue of public services, i.e. a catalogue of public services at European level. Public service descriptions from Estonia and Finland are harvested, transformed and displayed on a user-friendly webpage
+A cross-border catalogue of public services, i.e. a catalogue of public services at European level. Public service descriptions from Estonia and Finland are harvested, transformed and displayed on a user-friendly webpage.
 
 ## Introduction
 Citizens and businesses from Estonia and Finland face a number of **challenges** both at national and European level when trying to find information on the public services available to them:
@@ -35,3 +35,5 @@ The outcome of the pilot was a website where the harvested data was visualised i
 Both the [CPSV-AP Mapping Editor](https://github.com/catalogue-of-services-isa/cpsv-ap_mapping_tool) and the [CPSV-AP Data Harvester](https://github.com/catalogue-of-services-isa/CPSV-AP_harvester/) were used to deliver this pilot. The Editor mapped the data models of Estonia and Finland to the CPSV-AP, which was used as a common vocabulary. The public service descriptions from both Estonia and Finland were transformed using the mappings, creating CPSV-AP compliant descriptions. These descriptions were then collected by the CPSV-AP Data Harvester and visualised in the user-centric portal. 
 
 ![FinlandEstonia pilot](https://github.com/catalogue-of-services-isa/cpsv-ap_harvester_xborderPilot_Estonia_Finland/blob/master/images/finlandestonia%20pilot.png?raw=true)
+
+
