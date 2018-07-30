@@ -30,6 +30,7 @@ config.read('config.ini')
 
 ev = sys.argv[1]
 sector = sys.argv[2]
+# lang = sys.argv[3]
 
 endpoint_uri = config['Mandatory']['endpointURI']
 graph_uri = config['Mandatory']['graphURI']

@@ -8,7 +8,7 @@ function clean(){
 
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:80/harvesterPilotFederal/pages/clear.php",
+		url: "http://localhost:80/harvester_xBorder_pilot/pages/clear.php",
 		data: { },
 		async: false,
 		success: function (response) {
@@ -33,7 +33,7 @@ function harvest(){
 	
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:80/harvesterPilotFederal/pages/harvest.php",
+		url: "http://localhost:80/harvester_xBorder_pilot/pages/harvest.php",
 		data: { p: '1' },
 		async: false,
 		success: function (response) {
@@ -163,7 +163,7 @@ function appendContent (cell, v, style){
 function getPropertyName(propURI){
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:80/harvesterPilotFederal/pages/getProperties.php",
+		url: "http://localhost:80/harvester_xBorder_pilot/pages/getProperties.php",
 		data: { "p":propURI },
 		async: false,
 		success: function (response) {
@@ -281,7 +281,7 @@ function getStoredData (){
 			endpoint = xhttp.responseText;
 			}
 	};
-	xhttp.open("GET", "http://localhost:80/harvesterPilotFederal/pages/getEndPoint.php", false); //synchronized
+	xhttp.open("GET", "http://localhost:80/harvester_xBorder_pilot/pages/getEndPoint.php", false); //synchronized
 	xhttp.send();
 	
 	if (endpoint != "") {
@@ -291,7 +291,7 @@ function getStoredData (){
 				result = xhttp2.responseText;
 			}
 		};
-		xhttp2.open("GET", "http://localhost:80/harvesterPilotFederal/pages/show.php", false); //synchronized
+		xhttp2.open("GET", "http://localhost:80/harvester_xBorder_pilot/pages/show.php", false); //synchronized
 		xhttp2.send();
 		
 	}
@@ -540,7 +540,7 @@ function getTriplesURI(URI, classType){
 	
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:80/harvesterPilotFederal/pages/getTriplesURI.php",
+		url: "http://localhost:80/harvester_xBorder_pilot/pages/getTriplesURI.php",
 		data: { "URI":URI, "class":classType },
 		async: false,
 		success: function (response) {
@@ -593,7 +593,7 @@ function getPublicServices (country){
 	
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:80/harvesterPilotFederal/pages/getPS.php",
+		url: "http://localhost:80/harvester_xBorder_pilot/pages/getPS.php",
 		data: { "country":country },
 		async: false,
 		success: function (response) {
@@ -614,7 +614,7 @@ function getPublicServicesEvent (country, evURI){
 	
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:80/harvesterPilotFederal/pages/getPSEvent.php",
+		url: "http://localhost:80/harvester_xBorder_pilot/pages/getPSEvent.php",
 		data: { "country":country, "ev":evURI },
 		async: false,
 		success: function (response) {
@@ -634,7 +634,7 @@ function getListPublicServices (typeEvent){
 	
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:80/harvesterPilotFederal/pages/getListPS.php",
+		url: "http://localhost:80/harvester_xBorder_pilot/pages/getListPS.php",
 		data: { "ev":typeEvent },
 		async: false,
 		success: function (response) {
@@ -654,7 +654,7 @@ function getEvents (country){
 	
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:80/harvesterPilotFederal/pages/getEvents.php",
+		url: "http://localhost:80/harvester_xBorder_pilot/pages/getEvents.php",
 		data: { "country":country },
 		async: false,
 		success: function (response) {
@@ -674,7 +674,7 @@ function getSector (typeEvent){
 	
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:80/harvesterPilotFederal/pages/getSector.php",
+		url: "http://localhost:80/harvester_xBorder_pilot/pages/getSector.php",
 		data: { "type":typeEvent },
 		async: false,
 		success: function (response) {
@@ -713,6 +713,59 @@ function initialisePS (country, evURI) {
 	for (i=0; i<auxps.length-1; i++){
 		row = auxps[i].split("@#");
 		ps.innerHTML = ps.innerHTML + "<div class='form-radio-container'><input type='radio' id='" + row[0] + "' name='radioPS' value='Option " + i + "' /><label for='radio-" + i + "-_u916548098853793411'> " + row[1] + "</label></div>";
+	}
+}
+
+/**
+ * Initialisation of the pages. Initialisation of the list of PSs.
+ * #param {string} evURI - URI of the event.
+ */
+function initialisePSEU (evURI) {
+	var i=0, auxps = "", uri="", name="", row="", props="", j=0, auxev="", ev="", ps;
+	
+	//Update public service radio buttons of Estonia
+	ps = document.getElementById("PSContainerEstonia");
+	ps.innerHTML = "";
+	
+	if(evURI == "") {
+		props = getPublicServices ("Estonia");
+	}
+	else {
+		auxev = evURI.split("@#");
+		for (j=0; j<auxev.length; j++){
+			ev = auxev[j];
+			if(ev != "")
+				props = props + getPublicServicesEvent ("Estonia", ev);
+		}
+	}
+	
+	auxps = props.split("\n");
+	for (i=0; i<auxps.length-1; i++){
+		row = auxps[i].split("@#");
+		ps.innerHTML = ps.innerHTML + "<div class='form-radio-container'><input type='radio' id='" + row[0] + "' name='radioPSEstonia' value='Option " + i + "' /><label for='radio-" + i + "-_u916548098853793411'> " + row[1] + "</label></div>";
+	}
+	
+	//Update public service radio buttons of Finland
+	ps = document.getElementById("PSContainerFinland");
+	ps.innerHTML = "";
+	props = "";
+	
+	if(evURI == "") {
+		props = getPublicServices ("Finland");
+	}
+	else {
+		//auxev was already split
+		for (j=0; j<auxev.length; j++){
+			ev = auxev[j];
+			if(ev != "")
+				props = props + getPublicServicesEvent ("Finland", ev);
+		}
+	}
+	
+	auxps = props.split("\n");
+	for (i=0; i<auxps.length-1; i++){
+		row = auxps[i].split("@#");
+		ps.innerHTML = ps.innerHTML + "<div class='form-radio-container'><input type='radio' id='" + row[0] + "' name='radioPSFinland' value='Option " + i + "' /><label for='radio-" + i + "-_u916548098853793411'> " + row[1] + "</label></div>";
 	}
 }
 
@@ -798,15 +851,9 @@ function initialise (type) {
 	titleps.innerHTML = " ";
 	var descps = document.getElementById("description1");
 	descps.innerHTML = " ";
-	
 	titleps = document.getElementById("title2");
 	titleps.innerHTML = " ";
 	descps = document.getElementById("description2");
-	descps.innerHTML = " ";
-	
-	titleps = document.getElementById("title3");
-	titleps.innerHTML = " ";
-	descps = document.getElementById("description3");
 	descps.innerHTML = " ";
 }
 
@@ -878,9 +925,6 @@ function getSelectedSector () {
 		}
 	}
 	
-	if (uris != "")
-		uris = uris + "@#";
-	
 	return uris;
 }
 
@@ -893,7 +937,7 @@ function getURIProps (uri) {
 	
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:80/harvesterPilotFederal/pages/getURIprops.php",
+		url: "http://localhost:80/harvester_xBorder_pilot/pages/getURIprops.php",
 		data: { "uri":uri },
 		async: false,
 		success: function (response) {
@@ -913,7 +957,7 @@ function getMoreInfoURI (uri) {
 	
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:80/harvesterPilotFederal/pages/getMoreInfo.php",
+		url: "http://localhost:80/harvester_xBorder_pilot/pages/getMoreInfo.php",
 		data: { "uri":uri },
 		async: false,
 		success: function (response) {
@@ -933,7 +977,7 @@ function getURIShowProperty (uri) {
 	
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:80/harvesterPilotFederal/pages/getURIShowProp.php",
+		url: "http://localhost:80/harvester_xBorder_pilot/pages/getURIShowProp.php",
 		data: { "uri":uri },
 		async: false,
 		success: function (response) {
@@ -1144,21 +1188,18 @@ function getMoreInfo (uri, uriName) {
  */
 function getPSInfo (uri, origin) {
 	var props="";
-	var title, desc;
 	
-	if (origin == "Federal") {
-		title = document.getElementById("title1");
-		desc = document.getElementById("description1");
+	if (origin == "Estonia") {
+		var desc = document.getElementById("description1");
+		var title = document.getElementById("title1");
 	}
-	if (origin == "Flanders") {
-		title = document.getElementById("title2");
-		desc = document.getElementById("description2");
-	}
-	if (origin == "Wallonia") {
-		desc = document.getElementById("description3");
-		title = document.getElementById("title3");
+	if (origin == "Finland") {
+		var desc = document.getElementById("description2");
+		var title = document.getElementById("title2");
 	}
 
+	location.href="#title_desc";
+	
 	title.innerHTML = "";
 	desc.innerHTML = "Loading description...";
 	
@@ -1200,17 +1241,14 @@ function updateListPS (list) {
 	
 	var titleps = document.getElementById("title1");
 	titleps.innerHTML = "";
+	
 	var descps = document.getElementById("description1");
 	descps.innerHTML = "";
 	
 	titleps = document.getElementById("title2");
 	titleps.innerHTML = "";
-	descps = document.getElementById("description2");
-	descps.innerHTML = "";
 	
-	titleps = document.getElementById("title3");
-	titleps.innerHTML = "";
-	descps = document.getElementById("description3");
+	descps = document.getElementById("description2");
 	descps.innerHTML = "";
 }
 
@@ -1233,28 +1271,25 @@ function applyFilter () {
 	titleps.innerHTML = " ";	
 	descps = document.getElementById("description2");
 	descps.innerHTML = " ";
-	titleps = document.getElementById("title3");
-	titleps.innerHTML = " ";	
-	descps = document.getElementById("description3");
-	descps.innerHTML = " ";
 	
 	if (sector == "")
 		s = "NoSector";
-	else {
+	else
 		s = sector.replace(/ /g, "##");
-	}
+	
 	
 	var cad="";
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:80/harvesterPilotFederal/pages/getPSFilter.php",
-		data: { "ev":event, "sector":s },
+		url: "http://localhost:80/harvester_xBorder_pilot/pages/getPSFilter.php",
+		data: { "ev":event, "sector":s/* , "lang":l */ },
 		async: false,
 		success: function (response) {
 			cad = response;
 		},
 	});
 	
+	location.href="#list_PS";
 	updateListPS(cad);
 	
 }
