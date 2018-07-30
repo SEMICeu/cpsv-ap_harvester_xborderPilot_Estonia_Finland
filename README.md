@@ -17,4 +17,4 @@ The pilot can be accessed [here](http://cpsv-ap.semic.eu/cpsv-ap_harvester_xBord
 
 We designed a pilot to implement a **user-centric portal** where public service descriptions from both countries are available in a harmonised and user-friendly format. To achieve this, we conducted a mapping between the CPSV-AP and the Estonian and Finnish data models (FSC). The information required for the central portal is stored in different national portals in each country. That information was harvested, transformed to the CPSV-AP and published in a user-centric fashion by using the CPSV-AP as a common vocabulary between the data models. The figure below provides an overview of the process.
 
-![Finnish portal](https://github.com/catalogue-of-services-isa/cpsv-ap_rdf_editor/blob/master/images/downloadProjectFromGitHub.png?raw=true)
+![Finnish portal](https://github.com/catalogue-of-services-isa/cpsv-ap_harvester_xborderPilot_Estonia_Finland/blob/master/images/finnish%20portal_1.png?raw=true)
