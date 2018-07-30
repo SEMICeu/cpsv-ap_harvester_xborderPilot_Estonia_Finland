@@ -49,11 +49,11 @@ query = "select ?propname ?value where {<" + uri + "> <http://www.w3.org/1999/02
 urls = g.query (query)
 
 for row in urls:
-	name = str(row[0])
+	name = row[0].encode('utf-8')
 	if row[1] is None:
 		print (name + "@#" + "NoValue" + "##")
 	else:
-		value = str(row[1])
+		value = row[1].encode('utf-8')
 		print (name + "@#" + value + "##")
 
 # Cleanup the graph instance

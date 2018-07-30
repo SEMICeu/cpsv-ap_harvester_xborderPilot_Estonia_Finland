@@ -49,8 +49,8 @@ query = "select distinct ?name ?o where {<" + uri + "> ?p ?o. ?p <http://cpsvapf
 urls = g.query (query)
 
 for row in urls:
-	prop = str(row[0])
-	value = str(row[1])
+	prop = row[0].encode('utf-8')
+	value = row[1].encode('utf-8')
 	print (prop + "@#" + value)
 
 # Cleanup the graph instance

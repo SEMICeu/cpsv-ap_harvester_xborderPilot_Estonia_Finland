@@ -49,8 +49,8 @@ query = "select ?s ?name where {?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#t
 urls = g.query (query)
 
 for row in urls:
-	uri = str(row[0])
-	name = str(row[1])
+	uri = row[0].encode('utf-8')
+	name = row[1].encode('utf-8')
 	print (uri + "@#" + name)
 
 # Cleanup the graph instance

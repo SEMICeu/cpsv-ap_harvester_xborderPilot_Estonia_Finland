@@ -47,13 +47,13 @@ g = Graph(store, identifier=graph_uri)
 
 query = ""
 if type == "BE":
-	query = "select distinct ?sector where {?ps <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/vocab/cpsv#PublicService>; <http://data.europa.eu/m8g/isGroupedBy> ?event; <http://data.europa.eu/m8g/sector> ?sector. ?event <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/m8g/BusinessEvent>}"
+	query = "select distinct ?sector where {?ps <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/vocab/cpsv#PublicService>; <http://data.europa.eu/m8g/isGroupedBy> ?event; <http://data.europa.eu/m8g/sector> ?sector. ?event <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/m8g/BusinessEvent>} ORDER BY ?sector DESC(?sector)"
 if type == "LE":
-	query = "select distinct ?sector where {?ps <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/vocab/cpsv#PublicService>; <http://data.europa.eu/m8g/isGroupedBy> ?event; <http://data.europa.eu/m8g/sector> ?sector. ?event <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/m8g/LifeEvent>}"
+	query = "select distinct ?sector where {?ps <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/vocab/cpsv#PublicService>; <http://data.europa.eu/m8g/isGroupedBy> ?event; <http://data.europa.eu/m8g/sector> ?sector. ?event <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/m8g/LifeEvent>} ORDER BY ?sector DESC(?sector)"
 sectors = g.query (query)
 
 for row in sectors:
-	sec = str(row[0])
+	sec = row[0].encode('utf-8')
 	print (sec)
 	
 		

@@ -29,7 +29,7 @@ def clear():
 	endpoint_uri = config['Mandatory']['endpointURI']
 	graph_uri = config['Mandatory']['graphURI']
 
-	clean_graph_query = "DELETE FROM <"+graph_uri+"> {?s ?p ?o}  WHERE { ?s ?p ?o; !<http://cpsvapfield> ?o; !<http://cpsvapshow> ?o }"
+	clean_graph_query = "DELETE FROM <"+graph_uri+"> {?s ?p ?o}  WHERE { ?s ?p ?o; !<http://cpsvapfield> ?o; !<http://cpsvapshow> ?o; !<http://cpsvaporder> ?o }"
 	
 	# Set up endpoint and access to triple store
 	sparql = SPARQLWrapper(endpoint_uri)

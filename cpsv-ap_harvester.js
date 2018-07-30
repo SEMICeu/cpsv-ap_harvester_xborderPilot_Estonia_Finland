@@ -206,9 +206,37 @@ function updateTable (tableID, className, URIs, data) {
 				}
 				//Only show one property per class
 				switch (className){
+					case "Participation":	{
+						if (propURI == "http://purl.org/dc/terms/description"){
+							propName = "Description";
+							append = true;
+						}
+						break;
+					}
+					case "Cost":	{
+						if (propURI == "http://data.europa.eu/m8g/value"){
+							propName = "Value";
+							append = true;
+						}
+						break;
+					}
 					case "Channel":	{
-						if (propURI == "http://data.europa.eu/m8g/hasContactPoint"){
-							propName = "Contact Point";
+						if (propURI == "http://purl.org/dc/terms/type"){
+							propName = "Type";
+							append = true;
+						}
+						break;
+					}
+					case "OHE":	{
+						if (propURI == "https://schema.org/dayOfWeek"){
+							propName = "Day of week";
+							append = true;
+						}
+						break;
+					}
+					case "CP":	{
+						if (propURI == "https://schema.org/url"){
+							propName = "URL";
 							append = true;
 						}
 						break;
@@ -216,37 +244,6 @@ function updateTable (tableID, className, URIs, data) {
 					case "Address":	{
 						if (propURI == "http://www.w3.org/ns/locn#fullAddress"){
 							propName = "Full Address";
-							append = true;
-						}
-						break;
-					}
-					case "Contact Point":	{
-						if (propURI == "http://www.w3.org/2006/vcard/ns#hasURL"){
-							propName = "URL";
-							append = true;
-						}
-						break;
-					}
-					case "Cost":	{
-						if (propURI == "http://purl.org/dc/terms/description"){
-							propName = "Description";
-							append = true;
-						}
-						break;
-					}
-					case "PeriodofTime":	{
-						break;
-					}
-					/* case "FormalFramework":	{
-						if (propURI == "http://data.europa.eu/eli/ontology#id_local"){
-							propName = "Name";
-							append = true;
-						}
-						break;
-					} */
-					case "Participation":	{ //
-						if (propURI == "http://purl.org/dc/terms/description"){
-							propName = "Description";
 							append = true;
 						}
 						break;
@@ -351,9 +348,9 @@ function showClass(){
 			updateTable("data", "Participation", URIs, result);
 			break;
 		}
-		case "Criterion": {
+		case "CR": {
 			URIs = getclassURIs(result, "http://data.europa.eu/m8g/CriterionRequirement");
-			updateTable("data", "Criterion", URIs, result);
+			updateTable("data", "CriterionRequirement", URIs, result);
 			break;
 		}
 		case "Evidence": {
@@ -366,14 +363,19 @@ function showClass(){
 			updateTable("data", "Output", URIs, result);
 			break;
 		}
+		case "Cost": {
+			URIs = getclassURIs(result, "http://data.europa.eu/m8g/Cost");
+			updateTable("data", "Cost", URIs, result);
+			break;
+		}
 		case "Channel": {
 			URIs = getclassURIs(result, "http://data.europa.eu/m8g/Channel");
 			updateTable("data", "Channel", URIs, result);
 			break;
 		}
-		case "FF": {
-			URIs = getclassURIs(result, "http://purl.org/vocab/cpsv#FormalFramework");
-			updateTable("data", "FormalFramework", URIs, result);
+		case "OHE": {
+			URIs = getclassURIs(result, "https://schema.org/OpeningHoursSpecification");
+			updateTable("data", "OpeningHoursSpecification", URIs, result);
 			break;
 		}
 		case "Rule": {
@@ -381,14 +383,14 @@ function showClass(){
 			updateTable("data", "Rule", URIs, result);
 			break;
 		}
+		case "FF": {
+			URIs = getclassURIs(result, "http://purl.org/vocab/cpsv#FormalFramework");
+			updateTable("data", "FormalFramework", URIs, result);
+			break;
+		}
 		case "Agent": {
 			URIs = getclassURIs(result, "http://purl.org/dc/terms/Agent");
 			updateTable("data", "Agent", URIs, result);
-			break;
-		}
-		case "Contact": {
-			URIs = getclassURIs(result, "http://www.w3.org/2006/vcard/ns#Contact");
-			updateTable("data", "Contact", URIs, result);
 			break;
 		}
 		case "PO": {
@@ -396,14 +398,9 @@ function showClass(){
 			updateTable("data", "PublicOrganisation", URIs, result);
 			break;
 		}
-		case "Cost": {
-			URIs = getclassURIs(result, "http://data.europa.eu/m8g/Cost");
-			updateTable("data", "Cost", URIs, result);
-			break;
-		}
-		case "PT": {
-			URIs = getclassURIs(result, "http://data.europa.eu/m8g/PeriodOfTime");
-			updateTable("data", "PeriodofTime", URIs, result);
+		case "CP": {
+			URIs = getclassURIs(result, "https://schema.org/ContactPoint");
+			updateTable("data", "ContactPoint", URIs, result);
 			break;
 		}
 		case "Address": {
@@ -457,55 +454,55 @@ function showAll () {
 	updateTable("data", "LifeEvent", URIs, result);
 	
 	//show the Participations
-	URIs = getclassURIs(result, "http://data.europa.eu/m8g/Participation"); //
+	URIs = getclassURIs(result, "http://data.europa.eu/m8g/Participation");
 	updateTable("data", "Participation", URIs, result);
 	
-	//show the Criteria
-	URIs = getclassURIs(result, "http://data.europa.eu/m8g/CriterionRequirement"); //
-	updateTable("data", "Criterion", URIs, result);
+	//show the Criterion Requirement
+	URIs = getclassURIs(result, "http://data.europa.eu/m8g/CriterionRequirement");
+	updateTable("data", "CriterionRequirement", URIs, result);
 	
 	//show the Evidences
 	URIs = getclassURIs(result, "http://data.europa.eu/m8g/Evidence");
 	updateTable("data", "Evidence", URIs, result);
-
+	
 	//show the Outputs
-	URIs = getclassURIs(result, "http://data.europa.eu/m8g/Output"); //
+	URIs = getclassURIs(result, "http://data.europa.eu/m8g/Output");
 	updateTable("data", "Output", URIs, result);
-
-	//show the Channels
-	URIs = getclassURIs(result, "http://data.europa.eu/m8g/Channel"); //
-	updateTable("data", "Channel", URIs, result);
-
-	//show the Formal Frameworks
-	URIs = getclassURIs(result, "http://purl.org/vocab/cpsv#FormalFramework"); //
-	updateTable("data", "FormalFramework", URIs, result);
-
-	//show the Rules
-	URIs = getclassURIs(result, "http://purl.org/vocab/cpsv#Rule"); //
-	updateTable("data", "Rule", URIs, result);
-
-	//show the Agents
-	URIs = getclassURIs(result, "http://purl.org/dc/terms/Agent"); //
-	updateTable("data", "Agent", URIs, result);
-
-	//show the Contacts
-	URIs = getclassURIs(result, "http://www.w3.org/2006/vcard/ns#Contact"); //
-	updateTable("data", "Contact", URIs, result);
-
-	//show the Public Organisations
-	URIs = getclassURIs(result, "http://data.europa.eu/m8g/PublicOrganisation"); //
-	updateTable("data", "PublicOrganisation", URIs, result);
-
+	
 	//show the Costs
-	URIs = getclassURIs(result, "http://data.europa.eu/m8g/Cost"); //
+	URIs = getclassURIs(result, "http://data.europa.eu/m8g/Cost");
 	updateTable("data", "Cost", URIs, result);
-
-	//show the Period of Time
-	URIs = getclassURIs(result, "http://data.europa.eu/m8g/PeriodOfTime"); //
-	updateTable("data", "PeriodofTime", URIs, result);
-
+	
+	//show the Channels
+	URIs = getclassURIs(result, "http://data.europa.eu/m8g/Channel");
+	updateTable("data", "Channel", URIs, result);
+	
+	//show the Opening Hours Specifications
+	URIs = getclassURIs(result, "https://schema.org/OpeningHoursSpecification");
+	updateTable("data", "OpeningHoursSpecification", URIs, result);
+	
+	//show the Rules
+	URIs = getclassURIs(result, "http://purl.org/vocab/cpsv#Rule");
+	updateTable("data", "Rule", URIs, result);
+	
+	//show the Formal Frameworks
+	URIs = getclassURIs(result, "http://purl.org/vocab/cpsv#FormalFramework");
+	updateTable("data", "FormalFramework", URIs, result);
+	
+	//show the Agents
+	URIs = getclassURIs(result, "http://purl.org/dc/terms/Agent");
+	updateTable("data", "Agent", URIs, result);
+	
+	//show the Public Organisations
+	URIs = getclassURIs(result, "http://data.europa.eu/m8g/PublicOrganisation");
+	updateTable("data", "PublicOrganisation", URIs, result);
+	
+	//show the Contacts
+	URIs = getclassURIs(result, "https://schema.org/ContactPoint");
+	updateTable("data", "ContactPoint", URIs, result);
+	
 	//show the Address
-	URIs = getclassURIs(result, "http://www.w3.org/ns/locn#Address"); //
+	URIs = getclassURIs(result, "http://www.w3.org/ns/locn#Address");
 	updateTable("data", "Address", URIs, result);
 	
 	btn.disabled = false;
@@ -587,6 +584,10 @@ function updateDetailData (URI, classType) {
 	
 }
 
+/**
+ * Get all the public services from a determined country.
+ * #param {string} country - Name of the origin country from where to get the PSs.
+ */
 function getPublicServices (country){
 	var ps="";
 	
@@ -603,6 +604,11 @@ function getPublicServices (country){
 	return ps;
 }
 
+/**
+ * Get all the public services from a determined country filtered by type of event (Life or Business event).
+ * #param {string} country - Name of the origin country from where to get the PSs.
+ * #param {string} evURI - URI of the event.
+ */
 function getPublicServicesEvent (country, evURI){
 	var ps="";
 	
@@ -619,6 +625,10 @@ function getPublicServicesEvent (country, evURI){
 	return ps;
 }
 
+/**
+ * Get all the public services from a determined type of event (Life or Business event). The list contains the URI of the PS, origin, title and description.
+ * #param {string} typeEvent - BE or LE, depending of the type of page (business or citizens HTML).
+ */
 function getListPublicServices (typeEvent){
 	var ps="";
 	
@@ -635,6 +645,10 @@ function getListPublicServices (typeEvent){
 	return ps;
 }
 
+/**
+ * Get all the events of PSs from a country.
+ * #param {string} country - Name of the origin country from where to get the PSs.
+ */
 function getEvents (country){
 	var ev="";
 	
@@ -651,6 +665,10 @@ function getEvents (country){
 	return ev;
 }
 
+/**
+ * Get all the sectors of a determined type of event (Life or Business event).
+ * #param {string} typeEvent - BE or LE, depending of the type of page (business or citizens HTML).
+ */
 function getSector (typeEvent){
 	var sec="";
 	
@@ -667,23 +685,11 @@ function getSector (typeEvent){
 	return sec;
 }
 
-
-/* function getLanguage (typeEvent){
-	var lang="";
-	
-	$.ajax({
-		type: "GET",
-		url: "http://localhost:80/harvesterPilotFederal/pages/getLanguage.php",
-		data: { "type":typeEvent },
-		async: false,
-		success: function (response) {
-			lang = response;
-		},
-	});
-	
-	return lang;
-} */
-
+/**
+ * Initialisation of the pages. Initialisation of the public services.
+ * #param {string} country - Name of the origin country from where to get the PSs.
+ * #param {string} evURI - URI of the event.
+ */
 function initialisePS (country, evURI) {
 	var i=0, auxps = "", uri="", name="", row="", props="", j=0, auxev="", ev="";
 	var ps = document.getElementById("PSContainer");
@@ -710,55 +716,10 @@ function initialisePS (country, evURI) {
 	}
 }
 
-function initialisePSEU (evURI) {
-	var i=0, auxps = "", uri="", name="", row="", props="", j=0, auxev="", ev="", ps;
-	
-	//Update public service radio buttons of Estonia
-	ps = document.getElementById("PSContainerEstonia");
-	ps.innerHTML = "";
-	
-	if(evURI == "") {
-		props = getPublicServices ("Estonia");
-	}
-	else {
-		auxev = evURI.split("@#");
-		for (j=0; j<auxev.length; j++){
-			ev = auxev[j];
-			if(ev != "")
-				props = props + getPublicServicesEvent ("Estonia", ev);
-		}
-	}
-	
-	auxps = props.split("\n");
-	for (i=0; i<auxps.length-1; i++){
-		row = auxps[i].split("@#");
-		ps.innerHTML = ps.innerHTML + "<div class='form-radio-container'><input type='radio' id='" + row[0] + "' name='radioPSEstonia' value='Option " + i + "' /><label for='radio-" + i + "-_u916548098853793411'> " + row[1] + "</label></div>";
-	}
-	
-	//Update public service radio buttons of Finland
-	ps = document.getElementById("PSContainerFinland");
-	ps.innerHTML = "";
-	props = "";
-	
-	if(evURI == "") {
-		props = getPublicServices ("Finland");
-	}
-	else {
-		//auxev was already split
-		for (j=0; j<auxev.length; j++){
-			ev = auxev[j];
-			if(ev != "")
-				props = props + getPublicServicesEvent ("Finland", ev);
-		}
-	}
-	
-	auxps = props.split("\n");
-	for (i=0; i<auxps.length-1; i++){
-		row = auxps[i].split("@#");
-		ps.innerHTML = ps.innerHTML + "<div class='form-radio-container'><input type='radio' id='" + row[0] + "' name='radioPSFinland' value='Option " + i + "' /><label for='radio-" + i + "-_u916548098853793411'> " + row[1] + "</label></div>";
-	}
-}
-
+/**
+ * Initialisation of the pages. Initialisation of the list of sectors to filter.
+ * #param {string} type - BE or LE, depending of the type of page (business or citizens HTML).
+ */
 function initialiseSector (type) {
 	var sectors = getSector (type);
 	
@@ -772,28 +733,15 @@ function initialiseSector (type) {
 		uri = aux[i];
 		row = uri.split("/");
 		name = row[row.length-1];
-		sectors.innerHTML = sectors.innerHTML + "<span class='form-radio-container'><input type='checkbox' id='checkbox-" + i + "-_u904997771784187993' name='checkSector' value='" + uri.substring(0, uri.length-1) + "' /><label for='checkbox-" + i + "-_u904997771784187993'>" + name.substring(0, name.length-1) + "</label></span>";
+		sectors.innerHTML = sectors.innerHTML + "<span class='form-radio-container'><input type='checkbox' id='checkbox-" + i + "-_u904997771784187993' name='checkSector' value='" + uri + "' /><label for='checkbox-" + i + "-_u904997771784187993'>" + name + "</label></span>";
 		
 	}
 }
 
-/* function initialiseLanguage (type) {
-	var lang = getLanguage (type);
-	
-	var i=0, uri="", name="", row="", aux="";
-	
-	aux = lang.split("\n");
-	
-	var lang = document.getElementById("languageContainer");
-	lang.innerHTML = "";
-	for (i=0; i<aux.length-1; i++){
-		uri = aux[i];
-		row = uri.split("/");
-		name = row[row.length-1];
-		lang.innerHTML = lang.innerHTML + "<span class='form-radio-container'><input type='checkbox' id='checkbox-"+ i + "-_u953317408302598336' name='checkLanguage' value='" + uri.substring(0, uri.length-1) + "' /><label for='checkbox-"+ i + "-_u953317408302598336'>" + name.substring(0, name.length-1) + "</label></span>";
-	}
-} */
-
+/**
+ * Initialisation of the pages. Initialisation of the list of public services.
+ * #param {string} typeEvent - URI of the event.
+ */
 function initialiseListPS (typeEvent) {
 	var i=0, auxps = "", uri="", title="", row="", props="", desc="", cad="", origin="", aux="";
 	var ps = document.getElementById("listPS");
@@ -802,25 +750,31 @@ function initialiseListPS (typeEvent) {
 	
 	props = getListPublicServices (typeEvent);
 	
-	auxps = props.split("##");	
+	auxps = props.split("@@");	
 	for (i=0; i<auxps.length-1; i++){
-		row = auxps[i].split("@#");
+		row = auxps[i].split("##");
 		if (i>0) { 
 			aux = row[0].split("\n"); //Remove the first character, which is \n (introduced by python)
 			uri = aux[1]; 
 		}
 		else
-		uri = row[0];
-		origin = row[1];
-		title = row[2];
-		desc = row[3];
-		/* cad = cad + "<div onclick='getPSInfo(&#39;" + uri + "&#39;, &#39;" + origin + "&#39;)' style='cursor:pointer'><b>" + origin + " - " + title + ":</b> " + desc + "</div>"; */
-		cad = cad + "<tr><td><b>" + origin + "</b></td><td><b>" + title + ":</b> " + desc + "</td><td class='table-col-knowmore' onclick='getPSInfo(&#39;" + uri + "&#39;, &#39;" + origin + "&#39;)' style='cursor:pointer; text-align: center;'><img src='images/info2.png' alt='Imagen' style='width:136;max-width:60%;' /></td></tr>";
+			uri = row[0];
+		if (row[1] == "") origin = "No origin";
+		else origin = row[1];
+		if (row[2] == "") title = "No title available";
+		else title = row[2];
+		if (row[3] == "") desc = "No description available";
+		else desc = row[3];
+		cad = cad + "<tr><td style='vertical-align: text-top;'><b>" + origin + "</b></td><td><b>" + title + ":</b> " + desc + "</td><td class='table-col-knowmore' onclick='getPSInfo(&#39;" + uri + "&#39;, &#39;" + origin + "&#39;)' style='cursor:pointer; text-align: center;'><img src='images/info2.png' alt='Imagen' style='width:136;max-width:60%;' /></td></tr>";
 	}
 	
 	ps.innerHTML = cad;
 }
 
+/**
+ * Initialisation of the pages. It calls to the subfunctions to initialise the page sections (sectors, list of events, list of PSs).
+ * #param {string} type - BE or LE, depending of the type of page (business or citizens HTML).
+ */
 function initialise (type) {
 	var events = getEvents ("Not");
 	
@@ -838,23 +792,27 @@ function initialise (type) {
 	}
 	
 	initialiseSector(type);
-	/* initialiseLanguage(type); */
 	initialiseListPS(type);
 	
-	var titleps = document.getElementById("title");
-	titleps.innerHTML = " ";
-	var descps = document.getElementById("description");
-	descps.innerHTML = " ";
-	/* var titleps = document.getElementById("title1");
+	var titleps = document.getElementById("title1");
 	titleps.innerHTML = " ";
 	var descps = document.getElementById("description1");
 	descps.innerHTML = " ";
-	/* titleps = document.getElementById("title2");
+	
+	titleps = document.getElementById("title2");
 	titleps.innerHTML = " ";
 	descps = document.getElementById("description2");
-	descps.innerHTML = " "; */
+	descps.innerHTML = " ";
+	
+	titleps = document.getElementById("title3");
+	titleps.innerHTML = " ";
+	descps = document.getElementById("description3");
+	descps.innerHTML = " ";
 }
 
+/**
+ * Get the PS that is selected.
+ */
 function getSelectedPS () {
 	var radios = document.getElementsByName('radioPS');
 	var check = false, i=0, uri="";
@@ -872,6 +830,10 @@ function getSelectedPS () {
 	return uri;
 }
 
+/**
+ * Get the PS at EU level that is selected.
+ * #param {string} country - Name of the origin country from where to get the PSs.
+ */
 function getSelectedPSEU (country) {
 	var radios = document.getElementsByName('radioPS'+country);
 	var check = false, i=0, uri="";
@@ -889,6 +851,9 @@ function getSelectedPSEU (country) {
 	return uri;
 }
 
+/**
+ * Get the URI of the event that is selected that is selected, to filter.
+ */
 function getSelectedEvent () {
 	var events = document.getElementById ("eventsContainer");
 	var uri="";
@@ -898,6 +863,9 @@ function getSelectedEvent () {
 	return uri;
 }
 
+/**
+ * Get the name of the sector that is selected that is selected, to filter.
+ */
 function getSelectedSector () {
 	var radios = document.getElementsByName('checkSector');
 	var i=0, uris="";
@@ -910,24 +878,16 @@ function getSelectedSector () {
 		}
 	}
 	
+	if (uris != "")
+		uris = uris + "@#";
+	
 	return uris;
 }
 
-/* function getSelectedLanguage () {
-	var radios = document.getElementsByName('checkLanguage');
-	var i=0, uris="";
-	for ( i = 0; i < radios.length; i++) {
-		if(radios[i].checked) {
-			if (uris == "")
-				uris = radios[i].getAttribute("value");
-			else
-				uris = uris + "@#" + radios[i].getAttribute("value");
-		}
-	}
-	
-	return uris;
-} */
-
+/**
+ * Get the properties of a determined PS.
+ * #param {string} uri - URI of the PS.
+ */
 function getURIProps (uri) {
 	var props="";
 	
@@ -944,6 +904,10 @@ function getURIProps (uri) {
 	return props;
 }
 
+/**
+ * Get more information about a class non-PS (Public Organisation, Channel, Contact Point...).
+ * #param {string} uri - URI of the element.
+ */
 function getMoreInfoURI (uri) {
 	var props="";
 	
@@ -960,6 +924,10 @@ function getMoreInfoURI (uri) {
 	return props;
 }
 
+/**
+ * Get the property to show of a determined property (title of the Formal Framework, name of the Public Organisation...).
+ * #param {string} uri - URI of the property.
+ */
 function getURIShowProperty (uri) {
 	var props="";
 	
@@ -976,6 +944,13 @@ function getURIShowProperty (uri) {
 	return props;
 }
 
+/**
+ * Update the complete information of a PS on the HTML page.
+ * #param {string} field - HTML field to update with the description.
+ * #param {string} title - HTML field to update with the title.
+ * #param {string} list - List of properties of the PS.
+ * #param {string} origin - Origin (country, region) of the PS.
+ */
 function updateInfo (field, title, list, origin) {
 	var props="", aux="", i, prop="", value="", name="", cad="", show="", auxshow="", j, uri, propName, result="", propValue="";
 	
@@ -992,7 +967,8 @@ function updateInfo (field, title, list, origin) {
 			}
 			else {
 				if (value.substring(0, 4) == "http") {
-					uri = value.substring(0, value.length-1);
+					//uri = value.substring(0, value.length-1);
+					uri = value;
 					show = "";
 					show = getURIShowProperty (uri);
 					if (show == "")
@@ -1017,6 +993,9 @@ function updateInfo (field, title, list, origin) {
 	field.innerHTML = cad;
 }
 
+/**
+ * Apply the filter.
+ */
 function applyPS () {
 	var uri="", props="";
 	
@@ -1035,6 +1014,10 @@ function applyPS () {
 	}
 }
 
+/**
+ * Apply the filter at EU level.
+ * #param {string} country - Origin of the PS.
+ */
 function applyPSEU (country) {
 	var uri="", props="";
 	
@@ -1053,6 +1036,10 @@ function applyPSEU (country) {
 	}
 }
 
+/**
+ * Apply the event filter.
+ * #param {string} country - Origin (country, region) of the PS.
+ */
 function applyEvent (country) {
 	var uris="", props="", i;
 	
@@ -1067,6 +1054,11 @@ function applyEvent (country) {
 	}
 }
 
+/**
+ * Get more information about a determined URI (pop up window).
+ * #param {string} uri - URI of the element.
+ * #param {string} uriName - Name of the element.
+ */
 function getMoreInfo (uri, uriName) {
 	var modal, body, header, props="", bodyText="", i, name="", value="", aux="";
 	
@@ -1145,20 +1137,27 @@ function getMoreInfo (uri, uriName) {
 	}
 }
 
+/**
+ * Update the detailed information about a determined PS (i button).
+ * #param {string} uri - URI of the PS.
+ * #param {string} origin - Origin of the PS.
+ */
 function getPSInfo (uri, origin) {
 	var props="";
+	var title, desc;
 	
-	/* if (origin == "Estonia") {
-		var desc = document.getElementById("description1");
-		var title = document.getElementById("title1");
+	if (origin == "Federal") {
+		title = document.getElementById("title1");
+		desc = document.getElementById("description1");
 	}
-	if (origin == "Finland") {
-		var desc = document.getElementById("description2");
-		var title = document.getElementById("title2");
-	} */
-	
-	var title = document.getElementById("title");
-	var desc = document.getElementById("description");
+	if (origin == "Flanders") {
+		title = document.getElementById("title2");
+		desc = document.getElementById("description2");
+	}
+	if (origin == "Wallonia") {
+		desc = document.getElementById("description3");
+		title = document.getElementById("title3");
+	}
 
 	title.innerHTML = "";
 	desc.innerHTML = "Loading description...";
@@ -1168,88 +1167,88 @@ function getPSInfo (uri, origin) {
 	updateInfo(desc, title, props, origin);
 }
 
+/**
+ * Update the list of PS.
+ * #param {string} list - List of PSs.
+ */
 function updateListPS (list) {
 	var i=0, auxps = "", uri="", title="", row="", desc="", cad="", origin="", aux="";
 	var ps = document.getElementById("listPS");
 	
 	ps.innerHTML = "<tr><td/><td>Loading list of public services</td><td/></tr>";
 	
-	auxps = list.split("##");	
+	auxps = list.split("@@");	
 	for (i=0; i<auxps.length-1; i++){
-		row = auxps[i].split("@#");
+		row = auxps[i].split("##");
 		if (i>0) { 
 			aux = row[0].split("\n"); //Remove the first character, which is \n (introduced by python)
 			uri = aux[1]; 
 		}
 		else
-		uri = row[0];
-		origin = row[1];
-		title = row[2];
-		desc = row[3];
-		/* cad = cad + "<div onclick='getPSInfo(&#39;" + uri + "&#39;, &#39;" + origin + "&#39;)' style='cursor:pointer'><b>" + origin + " - " + title + ":</b> " + desc + "</div>"; */
-		cad = cad + "<tr><td><b>" + origin + "</b></td><td><b>" + title + ":</b> " + desc + "</td><td class='table-col-knowmore' onclick='getPSInfo(&#39;" + uri + "&#39;, &#39;" + origin + "&#39;)' style='cursor:pointer'><img src='images/info2.png' alt='Imagen' style='width:136;max-width:60%;' /></td></tr>";
+			uri = row[0];
+		if (row[1] == "") origin = "No origin";
+		else origin = row[1];
+		if (row[2] == "") title = "No title available";
+		else title = row[2];
+		if (row[3] == "") desc = "No description available";
+		else desc = row[3];
+		cad = cad + "<tr><td style='vertical-align: text-top;'><b>" + origin + "</b></td><td><b>" + title + ":</b> " + desc + "</td><td class='table-col-knowmore' onclick='getPSInfo(&#39;" + uri + "&#39;, &#39;" + origin + "&#39;)' style='cursor:pointer'><img src='images/info2.png' alt='Imagen' style='width:136;max-width:60%;' /></td></tr>";
 	}
 	
 	if (cad == "") cad = "<tr><td/><td>There is no public service found under that criteria.</td><td/></tr>";
 	ps.innerHTML = cad;
 	
-	
-	var titleps = document.getElementById("title");
-	titleps.innerHTML = "";	
-	var descps = document.getElementById("description");
-	descps.innerHTML = "";
-	/* var titleps = document.getElementById("title1");
+	var titleps = document.getElementById("title1");
 	titleps.innerHTML = "";
-	
 	var descps = document.getElementById("description1");
 	descps.innerHTML = "";
 	
 	titleps = document.getElementById("title2");
 	titleps.innerHTML = "";
-	
 	descps = document.getElementById("description2");
-	descps.innerHTML = ""; */
+	descps.innerHTML = "";
+	
+	titleps = document.getElementById("title3");
+	titleps.innerHTML = "";
+	descps = document.getElementById("description3");
+	descps.innerHTML = "";
 }
 
-
+/**
+ * Apply the filters selected (Apply filter button).
+ */
 function applyFilter () {
 	var event = getSelectedEvent ();
 	var sector = getSelectedSector ();
-	/* var lang = getSelectedLanguage (); */
 	
 	var s="", l="";
 	
 	var ps = document.getElementById("listPS");
 	ps.innerHTML = "<tr><td/><td>Loading list of public services</td><td/></tr>";
-	var titleps = document.getElementById("title");
-	titleps.innerHTML = " ";	
-	var descps = document.getElementById("description");
-	descps.innerHTML = " ";
-	/* var titleps = document.getElementById("title1");
+	var titleps = document.getElementById("title1");
 	titleps.innerHTML = " ";	
 	var descps = document.getElementById("description1");
 	descps.innerHTML = " ";
 	titleps = document.getElementById("title2");
 	titleps.innerHTML = " ";	
 	descps = document.getElementById("description2");
-	descps.innerHTML = " "; */
+	descps.innerHTML = " ";
+	titleps = document.getElementById("title3");
+	titleps.innerHTML = " ";	
+	descps = document.getElementById("description3");
+	descps.innerHTML = " ";
 	
 	if (sector == "")
 		s = "NoSector";
-	else
+	else {
 		s = sector.replace(/ /g, "##");
-	
-	/* if (lang == "")
-		l = "NoLang";
-	else
-		l = lang; */
-	
+	}
 	
 	var cad="";
 	$.ajax({
 		type: "GET",
 		url: "http://localhost:80/harvesterPilotFederal/pages/getPSFilter.php",
-		data: { "ev":event, "sector":s/* , "lang":l */ },
+		data: { "ev":event, "sector":s },
 		async: false,
 		success: function (response) {
 			cad = response;

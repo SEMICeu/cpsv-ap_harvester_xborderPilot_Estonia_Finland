@@ -48,7 +48,7 @@ def main():
 	g = Graph(store, identifier=graph_uri)
 
 	# Build the RDF from the source data
-	def rdf(urlrdf, f, num):
+	def rdf(urlrdf, f, num):		
 		input = Graph()
 		input.open("store2", create=True)
 		input.parse(urlrdf, format=f)

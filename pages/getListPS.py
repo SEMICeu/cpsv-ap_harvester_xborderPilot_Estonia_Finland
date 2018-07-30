@@ -53,11 +53,20 @@ if ev == "LE":
 urls = g.query (query)
 
 for row in urls:
-	uri = str(row[0])
-	origin = str(row[1])
-	name = str(row[2])
-	desc = str(row[3])
-	print (uri + "@#" + origin + "@#" + name + "@#" + desc + "##")
+	uri = row[0].encode('utf-8')
+	if row[1] != None:
+		origin = row[1].encode('utf-8')
+	else:
+		origin = ""
+	if row[1] != None:
+		name = row[2].encode('utf-8')
+	else:
+		name = ""
+	if row[3] != None:
+		desc = row[3].encode('utf-8')
+	else:
+		desc = ""
+	print (uri + "##" + origin + "##" + name + "##" + desc + "@@")
 
 # Cleanup the graph instance
 g.close()

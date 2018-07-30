@@ -1,8 +1,9 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
 $c = $_GET['country'];
 $e = $_GET['ev'];
-$cad = 'py getPSEvent.py' . " " . $c . " " . $e;
+$cad = 'python getPSEvent.py' . " " . $c . " " . $e;
 system($cad);
 
 ?>

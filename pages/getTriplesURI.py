@@ -56,7 +56,7 @@ properties = g.query (query)
 propURI = ""
 props = ""
 for row in properties:
-	propURI = str(row[0])
+	propURI = row[0].encode('utf-8')
 	if propURI != "http://www.w3.org/1999/02/22-rdf-syntax-ns#type":					
 		query = "select ?o WHERE { <" + propURI + "> <http://cpsvapfield> ?o }"
 		name = g.query (query)
@@ -71,7 +71,7 @@ for row in properties:
 					
 		props = props + "##" + str(row[1])
 	if propURI == "http://origin":
-		props = props + "@#" + "Origin" + "##" + str(row[1])
+		props = props + "@#" + "Origin" + "##" + row[1].encode('utf-8')
 
 print (props)
 # Cleanup the graph instance

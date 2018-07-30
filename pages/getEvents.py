@@ -46,9 +46,9 @@ sparql.addDefaultGraph(graph_uri)
 g = Graph(store, identifier=graph_uri)
 
 if country == "Not":
-	query = "select ?s ?name where {?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/m8g/BusinessEvent>. ?s <http://purl.org/dc/terms/title> ?name}"
+	query = "select ?s ?name where {?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/m8g/BusinessEvent>. ?s <http://purl.org/dc/terms/title> ?name} ORDER BY ?name DESC(?name)"
 else:
-	query = "select ?s ?name where {?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/m8g/BusinessEvent>. ?s <http://origin> '" + country + "'. ?s <http://purl.org/dc/terms/title> ?name}"
+	query = "select ?s ?name where {?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/m8g/BusinessEvent>. ?s <http://origin> '" + country + "'. ?s <http://purl.org/dc/terms/title> ?name} ORDER BY ?name DESC(?name)"
 urls = g.query (query)
 
 for row in urls:
@@ -57,9 +57,9 @@ for row in urls:
 	print ("BE@#" + uri + "@#" + name)
 
 if country == "Not":
-	query = "select ?s ?name where {?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/m8g/LifeEvent>. ?s <http://purl.org/dc/terms/title> ?name}"
+	query = "select ?s ?name where {?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/m8g/LifeEvent>. ?s <http://purl.org/dc/terms/title> ?name} ORDER BY ?name DESC(?name)"
 else:
-	query = "select ?s ?name where {?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/m8g/LifeEvent>. ?s <http://origin> '" + country + "'. ?s <http://purl.org/dc/terms/title> ?name}"
+	query = "select ?s ?name where {?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/m8g/LifeEvent>. ?s <http://origin> '" + country + "'. ?s <http://purl.org/dc/terms/title> ?name} ORDER BY ?name DESC(?name)"
 urls = g.query (query)
 
 for row in urls:

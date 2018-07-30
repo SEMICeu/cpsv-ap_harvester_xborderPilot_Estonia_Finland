@@ -1,7 +1,8 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
 $c = $_GET['type'];
-$cad = 'py getSector.py' . " " . $c;
+$cad = 'python getSector.py' . " " . $c;
 system($cad);
 
 ?>

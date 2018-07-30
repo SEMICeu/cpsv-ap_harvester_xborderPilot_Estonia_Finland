@@ -59,7 +59,7 @@ sparql.query().convert()
 # Build the RDF from the source data
 input = Graph()
 input.open("store2", create=True)
-input.parse("http://localhost/harvesterPilotHTML/pages/CPSVAPdefinition.ttl", format='turtle')
+input.parse("./CPSVAPdefinition.ttl", format='turtle')
 
 for s, p, o in input:
 	g.add((s, p, o))

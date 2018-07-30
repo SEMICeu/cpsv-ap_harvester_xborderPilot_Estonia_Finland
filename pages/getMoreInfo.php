@@ -1,7 +1,8 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
 $u = $_GET['uri'];
-$cad = 'py getMoreInfo.py' . " " . $u;
+$cad = 'python getMoreInfo.py' . " " . $u;
 system($cad);
 
 ?>
